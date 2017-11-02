@@ -1,20 +1,44 @@
-MatConvNet训练自己的数据
------
-当前几乎所有主流的开源深度学习工具都做了一个非常强的假设：用户会自己去看源代码，也就是所谓的代码是自解释的。
+# MatConvNet tutorial
+##  用[MatConvNet](https://github.com/vlfeat/matconvnet)训练自己的数据
 
-其实真的也没什么难的，就是按照基本流程来就好了：
+## 安装和编译MatConvNet
 
-无外乎准备数据，设计网络结构，开始训练，最后是验证训练的结果。
+	git clone https://github.com/vlfeat/matconvnet
+	cd matconvnet
+	%create a new file called compileGPU.m and save its contents as:
+	addpath matlab
+	vl_compilenn('enableGpu', true, ...
+               'cudaRoot', 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0', ...
+               'cudaMethod', 'nvcc');%,...
+	%                'enableCudnn', 'true',...
+	%                'cudnnRoot','E:\MachineLearning\DeepLearning\CuDNN\CUDNNv4') ;
+	%
 
-MatConvNet示例数据都是很常用的，mnist、cifar等有自己的存储格式，按照它给的定义解析出来就好了。ImageNet太大，100多G，小课题组没有强大的装备不可能去实现，也没那个必要。
+	%then setup the mex environment
+	%please select VS2015 or greater
+	mex -setup c
+	mex -setup cpp
+	%finally you got it
+	compileGPU
 
-这里给出的示例相对而言还是比较科学的，把每个类别的数据放在同一个文件夹下，然后依次读取，并划分训练集和验证集，只不过还缺少一个随机打乱数据顺序的过程。
+## 准备数据
 
-网络结构可以参考已有的结构，稍加改动，训练就一句代码搞定。
+在这里从EasyPR获取了车牌数据,0-9共10类字符,每类字符存放在一个子文件夹下
 
-验证训练效果的话也可以参考已有的例子实现。
+## 编写网络结构
 
-具体参见  MatConvNet使用指南.pdf
+参考cnn_plate_init.m编写网络结果
 
-相关：
+## 训练
+
+运行cnn_plate.m训练网络
+
+## 测试
+
+demo.m展示了如何使用训练好的模型
+
+## 参考
+
+[caffe一键式集成开发环境](https://github.com/imistyrain/caffe-oneclick)
+
 [mxnet训练自己的数据](https://github.com/imistyrain/mxnet-mr)

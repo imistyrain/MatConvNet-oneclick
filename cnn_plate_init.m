@@ -1,6 +1,6 @@
 function net =cnn_plate_init()
 rng('default');
-rng(0) ;
+rng(0) ; 
 
 f=1/100 ;
 net.layers = {};
@@ -25,7 +25,7 @@ net.layers{end+1} = struct('type', 'pool', ...
                            'pad', 0) ;
 net.layers{end+1} = struct('type', 'relu') ;
 net.layers{end+1} = struct('type', 'conv', ...
-   'weights', {{f*randn(3,3,100,1000, 'single'),zeros(1,1000,'single')}}, ...
+   'weights', {{f*randn(3,3,100,65, 'single'),zeros(1,65,'single')}}, ...
    'stride', 1, ...
    'pad', 0) ;
 net.layers{end+1} = struct('type', 'softmaxloss') ;

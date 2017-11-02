@@ -1,10 +1,6 @@
 function [net, info] = cnn_plate()
-run(fullfile(fileparts(mfilename('fullpath')),...
-  '..', '..', 'matlab', 'vl_setupnn.m')) ;
-%datadir='E:\MachineLearning\caffe\caffe-windows-master\platerecognition\data\platerecognition\chars2';
-datadir='E:\PatternRecognition\PlateRecognition\EasyPR\EasyPR-1.4\resources\train\ann';
-opts.expDir = fullfile(vl_rootnn, 'data', 'plate-baseline') ;
-opts.imdbPath = fullfile(opts.expDir, 'imdb.mat');
+global datadir;
+startup;
 if exist(opts.imdbPath,'file')
     imdb=load(opts.imdbPath);
 else
