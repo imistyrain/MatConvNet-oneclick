@@ -23,11 +23,12 @@
 
 ## 准备数据
 
-在这里从EasyPR获取了车牌数据,0-9共10类字符,每类字符存放在一个子文件夹下
+在这里从EasyPR获取了车牌数据(解压[data.zip](data.zip)即可),0-9共10类字符,每类字符存放在一个子文件夹下,如下图所示：
 
+![](https://i.imgur.com/j3zJ0YL.jpg)
 ## 编写网络结构
 
-参考cnn_plate_init.m编写网络结果
+参考cnn_plate_init.m编写网络结构
 
 ## 训练
 
