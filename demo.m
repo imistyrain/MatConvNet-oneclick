@@ -1,4 +1,5 @@
-netpath=[opts.expDir '/net-epoch-50.mat'];
+%netpath=[opts.expDir '/net-epoch-50.mat'];
+netpath='models/net-epoch-50.mat';
 if not (exist(netpath))
     cnn_plate;
 end
